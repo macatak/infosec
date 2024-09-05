@@ -11,6 +11,8 @@
   - Test unauthorized access across all HTTP methods (GET, POST, DELETE, etc.).
   - Replace objectIDs and tokens with those from other users and attempt unauthorized actions.
   - Ensure every object reference and all endpoints are protected.
+- **Can Detection Be Automated?**: **Partially**
+  - Automated testing can be used to replace objectIDs or userIDs and check for unauthorized access. Tools like Burp Suite or Postman can automate some aspects, but testing every objectID across all endpoints might require manual effort to fully test authorization.
 
 ## 2. Broken User Authentication (BUA)
 
@@ -22,6 +24,8 @@
 - **Detection**:
   - Test for weak passwords, missing CAPTCHA, improper use or validation of tokens (like JWT), and lack of expiration handling.
   - Ensure JWT tokens are properly validated, including signature, expiration, and algorithm.
+- **Can Detection Be Automated?**: **Yes**
+  - Brute-force attacks, weak password detection, missing CAPTCHA, and improper token handling can be automated using tools like OWASP ZAP, Burp Suite, or custom scripts.
 
 ## 3. Excessive Data Exposure
 
@@ -33,6 +37,8 @@
   - Ensure the API only returns the required data and no sensitive information.
   - Review API responses for metadata leaks or unintentional exposure of sensitive data.
   - Use scanners but manually review what’s being returned.
+- **Can Detection Be Automated?**: **Partially**
+  - Tools can scan API responses to check for excessive data exposure (e.g., using OWASP ZAP or Burp Suite). However, automated tools may struggle to differentiate between legitimate and sensitive data, requiring manual review.
 
 ## 4. Lack of Resources & Rate Limiting
 
@@ -44,6 +50,8 @@
   - Test file uploads and large data requests for size limitations.
   - Check if rate limiting is applied to all endpoints.
   - Ensure input/output size restrictions are enforced to prevent oversized data transmissions.
+- **Can Detection Be Automated?**: **Yes**
+  - Automated tools can simulate high-frequency requests to test rate limiting and excessive data requests (e.g., large file uploads). Tools like JMeter, Burp Suite, or custom scripts can stress-test APIs.
 
 ## 5. Broken Function Level Authorization
 
@@ -54,6 +62,8 @@
 - **Detection**:
   - Use tools like Burp Suite to manipulate URLs, parameters, and HTTP methods (GET, POST, PUT, DELETE) to access higher-privileged functions.
   - Test for hidden endpoints using brute force and analyze all available HTTP methods for each endpoint.
+- **Can Detection Be Automated?**: **Partially**
+  - Some aspects of function-level authorization can be automated (e.g., testing access to higher-privileged functions via URL manipulation and HTTP methods). However, identifying all possible unauthorized endpoints may require manual testing.
 
 ## 6. Mass Assignment
 
@@ -64,6 +74,8 @@
 - **Detection**:
   - Identify sensitive properties in API responses and attempt to modify them in subsequent requests.
   - Test if users can modify server-side properties they shouldn’t have access to, such as changing user roles or product prices.
+- **Can Detection Be Automated?**: **No**
+  - Mass assignment detection typically requires an understanding of business logic, making it difficult to automate. Manual testing is usually required to check if server-side properties are properly restricted.
 
 ## 7. Security Misconfiguration
 
@@ -75,6 +87,8 @@
 - **Detection**:
   - Scan for open ports, improper CORS settings, public access to sensitive data, and incorrect TLS configurations.
   - Test if sensitive information (e.g., stack traces, error details) is exposed in error messages.
+- **Can Detection Be Automated?**: **Yes**
+  - Automated scanning tools like OWASP ZAP, Burp Suite, or security scanners can detect security misconfigurations, such as open ports, improper CORS settings, missing security headers (CSP, HSTS), and improper TLS configurations.
 
 ## 8. Injection
 
@@ -86,6 +100,8 @@
   - Test all input fields, including those for file uploads, to identify if user input can lead to SQL, OS, or XML injections.
   - Use payloads such as `';select * from users;--` for SQL injection testing.
   - Use tools like Burp Suite to attempt OS command injections.
+- **Can Detection Be Automated?**: **Yes**
+  - Tools like OWASP ZAP, Burp Suite, and SQLmap can automate the detection of SQL, XML, and OS injection vulnerabilities.
 
 ## 9. Improper Assets Management
 
@@ -96,6 +112,8 @@
 - **Detection**:
   - Test if older versions of the API can be accessed by changing the version number in the URL.
   - Ensure that all API versions are documented, and brute force test hidden or deprecated endpoints (e.g., `/v1/admin`).
+- **Can Detection Be Automated?**: **Partially**
+  - Tools can automate the discovery of API versions by altering the URL (e.g., changing `/v2/` to `/v1/`). However, detecting outdated or deprecated APIs might require manual verification.
 
 ## 10. Insufficient Logging & Monitoring
 
@@ -106,3 +124,5 @@
 - **Detection**:
   - Ensure logging includes IP addresses, timestamps, input data, and the endpoints accessed, while avoiding logging sensitive information like PII.
   - Regularly review logs for suspicious activities and test for potential log injection attacks.
+- **Can Detection Be Automated?**: **No**
+  - While monitoring tools can automate log generation and analysis, detecting insufficient logging itself requires manual review. Identifying missing log entries, incomplete logs, or logging of sensitive information often requires a manual audit.
