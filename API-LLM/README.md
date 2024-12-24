@@ -15,30 +15,32 @@ It leverages:
         Attempt to infer endpoint details for incomplete definitions.
         Flag endpoints that are not properly defined.
     Save parsed results in a timestamped JSON file.
-2. LLM Integration - User/Health Analysis
-    Analyze the parsed JSON or original spec to:
+
+!!!!!!!!!!!!!!  TBD !!!!!!!!!!!!!!!!!!!!!
+3. LLM Integration - User/Health Analysis
+    Analyze the parsed JSON created above to:
         Identify a heartbeat endpoint (returns 200 OK with no parameters).
             If no explicit heartbeat endpoint is found, infer one dynamically.
             Run the heartbeat periodically to ensure API availability.
         Locate user-related endpoints (e.g., login, registration, authentication).
     Save identified endpoints to a timestamped JSON file.
-3. Testing Initialization
+4. Testing Initialization
     Use the heartbeat endpoint to confirm the API application is running before initiating tests.
     Prepare the list of all endpoints to test (from the parsed spec and inferred details).
-4. LLM Integration - Suspicious Parameter Detection
+5. LLM Integration - Suspicious Parameter Detection
     Query the LLM to identify suspicious parameters for mass assignment testing.
         Retry if no results are obtained, fallback to pre-defined parameter patterns, then skip if necessary.
     Save suggested parameters for each endpoint in a JSON file.
-5. Payload Generation
+6. Payload Generation
     Use extracted schemas and LLM suggestions to generate test payloads.
         Incorporate suspicious parameters and variations for fuzzing.
         Generate both valid and intentionally malformed payloads.
     Save generated payloads to a timestamped JSON file.
-6. Request Sending
+7. Request Sending
     Sequentially or in parallel (based on configuration) send the generated payloads to API endpoints.
         Retry automatically for transient failures, then log warnings and continue.
     Store request/response pairs in a timestamped folder.
-7. Response Analysis
+8. Response Analysis
     Compare responses to baseline expectations.
         Flag anomalies such as:
             Status code mismatches.
@@ -46,7 +48,7 @@ It leverages:
             Unexpected schema deviations or sensitive data exposure.
         Include response headers and performance metrics in the analysis.
     Save analysis results to a JSON file.
-8. Reporting
+9. Reporting
     Consolidate findings from all steps into a single JSON report.
         Include all tested endpoints, suspicious parameters, and detected vulnerabilities.
         Highlight endpoints flagged as improperly defined.
