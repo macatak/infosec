@@ -1,11 +1,15 @@
 # API Testing
-Focuses on detecting Mass Assignment vulnerabilities and other API security issues (e.g., from the OWASP API Security Top 10) by combining static analysis, 
+Focuses on detecting Mass Assignment vulnerabilities (other API security issues to follow from the OWASP API Security Top 10) by combining static analysis, 
 LLM-powered insights, and dynamic endpoint testing.  
 It leverages:
 -  OpenAPI Spec Analysis: To identify and prepare endpoints for testing.
 -  LLM Integration: To detect suspicious or hidden parameters in schemas and actual API responses.
 -  Dynamic Testing: By generating and sending test payloads to endpoints and analyzing their responses for anomalies.
 -  Reporting: Aggregating findings into a clear, actionable report detailing vulnerabilities, affected endpoints, and potential exploit vectors.
+
+## Files
+  - ApiTestingLlmAssist_working - Working notebook
+  - API-LLM-sandbox - Beta testing
 
 ## Environment Details
   - Using a local Ollama service
