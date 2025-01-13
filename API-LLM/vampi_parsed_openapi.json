@@ -1,0 +1,689 @@
+{
+    "servers": [
+        "http://172.18.0.2:5000"
+    ],
+    "endpoints": [
+        {
+            "endpoint_name": "/createdb",
+            "method": "GET",
+            "summary": "Creates and populates the database with dummy data",
+            "body_is_required": false,
+            "required_request_parameters": [],
+            "response_codes": [
+                "200"
+            ],
+            "response_parameters": {
+                "200": [
+                    {
+                        "name": "message",
+                        "required": false,
+                        "type": "string",
+                        "example": "Database populated."
+                    }
+                ]
+            },
+            "security": "None",
+            "registration": false,
+            "login_candidate": false,
+            "user_related": false
+        },
+        {
+            "endpoint_name": "/",
+            "method": "GET",
+            "summary": "VAmPI home",
+            "body_is_required": false,
+            "required_request_parameters": [],
+            "response_codes": [
+                "200"
+            ],
+            "response_parameters": {
+                "200": [
+                    {
+                        "name": "message",
+                        "required": false,
+                        "type": "string",
+                        "example": "VAmPI the Vulnerable API"
+                    },
+                    {
+                        "name": "help",
+                        "required": false,
+                        "type": "string",
+                        "example": "VAmPI is a vulnerable on purpose API. It was created in order to evaluate the efficiency of third party tools in identifying vulnerabilities in APIs but it can also be used in learning/teaching purposes."
+                    },
+                    {
+                        "name": "vulnerable",
+                        "required": false,
+                        "type": "number",
+                        "example": 1
+                    }
+                ]
+            },
+            "security": "None",
+            "registration": false,
+            "login_candidate": false,
+            "user_related": false
+        },
+        {
+            "endpoint_name": "/users/v1",
+            "method": "GET",
+            "summary": "Retrieves all users",
+            "body_is_required": false,
+            "required_request_parameters": [],
+            "response_codes": [
+                "200"
+            ],
+            "response_parameters": {
+                "200": [
+                    {
+                        "name": "users",
+                        "required": false,
+                        "type": "array",
+                        "example": null
+                    }
+                ]
+            },
+            "security": "None",
+            "registration": false,
+            "login_candidate": false,
+            "user_related": false
+        },
+        {
+            "endpoint_name": "/users/v1/_debug",
+            "method": "GET",
+            "summary": "Retrieves all details for all users",
+            "body_is_required": false,
+            "required_request_parameters": [],
+            "response_codes": [
+                "200"
+            ],
+            "response_parameters": {
+                "200": [
+                    {
+                        "name": "users",
+                        "required": false,
+                        "type": "array",
+                        "example": null
+                    }
+                ]
+            },
+            "security": "None",
+            "registration": false,
+            "login_candidate": false,
+            "user_related": false
+        },
+        {
+            "endpoint_name": "/users/v1/register",
+            "method": "POST",
+            "summary": "Register new user",
+            "body_is_required": true,
+            "required_request_parameters": [
+                {
+                    "name": "username",
+                    "required": false,
+                    "type": "string",
+                    "example": "name1"
+                },
+                {
+                    "name": "password",
+                    "required": false,
+                    "type": "string",
+                    "example": "pass1"
+                },
+                {
+                    "name": "email",
+                    "required": false,
+                    "type": "string",
+                    "example": "user@tempmail.com"
+                }
+            ],
+            "response_codes": [
+                "200",
+                "400"
+            ],
+            "response_parameters": {
+                "200": [
+                    {
+                        "name": "message",
+                        "required": false,
+                        "type": "string",
+                        "example": "Successfully registered. Login to receive an auth token."
+                    },
+                    {
+                        "name": "status",
+                        "required": false,
+                        "type": "string",
+                        "example": "success"
+                    }
+                ],
+                "400": []
+            },
+            "security": "None",
+            "registration": true,
+            "login_candidate": false,
+            "user_related": true
+        },
+        {
+            "endpoint_name": "/users/v1/login",
+            "method": "POST",
+            "summary": "Login to VAmPI",
+            "body_is_required": true,
+            "required_request_parameters": [
+                {
+                    "name": "username",
+                    "required": false,
+                    "type": "string",
+                    "example": "name1"
+                },
+                {
+                    "name": "password",
+                    "required": false,
+                    "type": "string",
+                    "example": "pass1"
+                }
+            ],
+            "response_codes": [
+                "200",
+                "400"
+            ],
+            "response_parameters": {
+                "200": [
+                    {
+                        "name": "auth_token",
+                        "required": false,
+                        "type": "string",
+                        "example": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NzAxNjA2MTcsImlhdCI6MTY3MDE2MDU1Nywic3ViIjoiSm9obi5Eb2UifQ.n17N4AxTbL4_z65-NR46meoytauPDjImUxrLiUMSTQw"
+                    },
+                    {
+                        "name": "message",
+                        "required": false,
+                        "type": "string",
+                        "example": "Successfully logged in."
+                    },
+                    {
+                        "name": "status",
+                        "required": false,
+                        "type": "string",
+                        "example": "success"
+                    }
+                ],
+                "400": [
+                    {
+                        "name": "status",
+                        "required": false,
+                        "type": "string",
+                        "example": "fail"
+                    },
+                    {
+                        "name": "message",
+                        "required": false,
+                        "type": "string",
+                        "example": "Password is not correct for the given username."
+                    }
+                ]
+            },
+            "security": "None",
+            "registration": false,
+            "login_candidate": true,
+            "user_related": true
+        },
+        {
+            "endpoint_name": "/me",
+            "method": "GET",
+            "summary": "Retrieves currently logged in user",
+            "body_is_required": false,
+            "required_request_parameters": [],
+            "response_codes": [
+                "200",
+                "401"
+            ],
+            "response_parameters": {
+                "200": [
+                    {
+                        "name": "admin",
+                        "required": false,
+                        "type": "boolean",
+                        "example": false
+                    },
+                    {
+                        "name": "email",
+                        "required": false,
+                        "type": "string",
+                        "example": "mail1@mail.com"
+                    },
+                    {
+                        "name": "username",
+                        "required": false,
+                        "type": "string",
+                        "example": "name1"
+                    },
+                    {
+                        "name": "status",
+                        "required": false,
+                        "type": "string",
+                        "example": "success"
+                    }
+                ],
+                "401": [
+                    {
+                        "name": "status",
+                        "required": false,
+                        "type": "string",
+                        "example": "fail"
+                    },
+                    {
+                        "name": "message",
+                        "required": false,
+                        "type": "string",
+                        "example": null
+                    }
+                ]
+            },
+            "security": "JWT",
+            "registration": false,
+            "login_candidate": false,
+            "user_related": true
+        },
+        {
+            "endpoint_name": "/users/v1/{username}",
+            "method": "GET",
+            "summary": "Retrieves user by username",
+            "body_is_required": false,
+            "required_request_parameters": [
+                {
+                    "name": "username",
+                    "in": "path",
+                    "required": true,
+                    "type": "string",
+                    "example": "name1"
+                }
+            ],
+            "response_codes": [
+                "200",
+                "404"
+            ],
+            "response_parameters": {
+                "200": [
+                    {
+                        "name": "username",
+                        "required": false,
+                        "type": "string",
+                        "example": "name1"
+                    },
+                    {
+                        "name": "email",
+                        "required": false,
+                        "type": "string",
+                        "example": "mail1@mail.com"
+                    }
+                ],
+                "404": [
+                    {
+                        "name": "status",
+                        "required": false,
+                        "type": "string",
+                        "example": "fail"
+                    },
+                    {
+                        "name": "message",
+                        "required": false,
+                        "type": "string",
+                        "example": "User not found"
+                    }
+                ]
+            },
+            "security": "None",
+            "registration": false,
+            "login_candidate": false,
+            "user_related": true
+        },
+        {
+            "endpoint_name": "/users/v1/{username}",
+            "method": "DELETE",
+            "summary": "Deletes user by username (Only Admins)",
+            "body_is_required": false,
+            "required_request_parameters": [
+                {
+                    "name": "username",
+                    "in": "path",
+                    "required": true,
+                    "type": "string",
+                    "example": "name1"
+                }
+            ],
+            "response_codes": [
+                "200",
+                "401",
+                "404"
+            ],
+            "response_parameters": {
+                "200": [
+                    {
+                        "name": "message",
+                        "required": false,
+                        "type": "string",
+                        "example": "User deleted."
+                    },
+                    {
+                        "name": "status",
+                        "required": false,
+                        "type": "string",
+                        "example": "success"
+                    }
+                ],
+                "401": [
+                    {
+                        "name": "status",
+                        "required": false,
+                        "type": "string",
+                        "example": "fail"
+                    },
+                    {
+                        "name": "message",
+                        "required": false,
+                        "type": "string",
+                        "example": "Only Admins may delete users!"
+                    }
+                ],
+                "404": [
+                    {
+                        "name": "status",
+                        "required": false,
+                        "type": "string",
+                        "example": "fail"
+                    },
+                    {
+                        "name": "message",
+                        "required": false,
+                        "type": "string",
+                        "example": "User not found!"
+                    }
+                ]
+            },
+            "security": "JWT",
+            "registration": false,
+            "login_candidate": false,
+            "user_related": false
+        },
+        {
+            "endpoint_name": "/users/v1/{username}/email",
+            "method": "PUT",
+            "summary": "Update users email",
+            "body_is_required": true,
+            "required_request_parameters": [
+                {
+                    "name": "username",
+                    "in": "path",
+                    "required": true,
+                    "type": "string",
+                    "example": "name1"
+                },
+                {
+                    "name": "email",
+                    "required": false,
+                    "type": "string",
+                    "example": "mail3@mail.com"
+                }
+            ],
+            "response_codes": [
+                "204",
+                "400",
+                "401"
+            ],
+            "response_parameters": {
+                "204": [],
+                "400": [
+                    {
+                        "name": "status",
+                        "required": false,
+                        "type": "string",
+                        "example": "fail"
+                    },
+                    {
+                        "name": "message",
+                        "required": false,
+                        "type": "string",
+                        "example": "Please Provide a valid email address."
+                    }
+                ],
+                "401": [
+                    {
+                        "name": "status",
+                        "required": false,
+                        "type": "string",
+                        "example": "fail"
+                    },
+                    {
+                        "name": "message",
+                        "required": false,
+                        "type": "string",
+                        "example": "Invalid token. Please log in again."
+                    }
+                ]
+            },
+            "security": "JWT",
+            "registration": false,
+            "login_candidate": false,
+            "user_related": true
+        },
+        {
+            "endpoint_name": "/users/v1/{username}/password",
+            "method": "PUT",
+            "summary": "Update users password",
+            "body_is_required": true,
+            "required_request_parameters": [
+                {
+                    "name": "username",
+                    "in": "path",
+                    "required": true,
+                    "type": "string",
+                    "example": "name1"
+                },
+                {
+                    "name": "password",
+                    "required": false,
+                    "type": "string",
+                    "example": "pass4"
+                }
+            ],
+            "response_codes": [
+                "204",
+                "400",
+                "401"
+            ],
+            "response_parameters": {
+                "204": [],
+                "400": [
+                    {
+                        "name": "status",
+                        "required": false,
+                        "type": "string",
+                        "example": "fail"
+                    },
+                    {
+                        "name": "message",
+                        "required": false,
+                        "type": "string",
+                        "example": "Malformed Data"
+                    }
+                ],
+                "401": [
+                    {
+                        "name": "status",
+                        "required": false,
+                        "type": "string",
+                        "example": "fail"
+                    },
+                    {
+                        "name": "message",
+                        "required": false,
+                        "type": "string",
+                        "example": "Invalid token. Please log in again."
+                    }
+                ]
+            },
+            "security": "JWT",
+            "registration": false,
+            "login_candidate": false,
+            "user_related": true
+        },
+        {
+            "endpoint_name": "/books/v1",
+            "method": "GET",
+            "summary": "Retrieves all books",
+            "body_is_required": false,
+            "required_request_parameters": [],
+            "response_codes": [
+                "200"
+            ],
+            "response_parameters": {
+                "200": [
+                    {
+                        "name": "Books",
+                        "required": false,
+                        "type": "array",
+                        "example": null
+                    }
+                ]
+            },
+            "security": "None",
+            "registration": false,
+            "login_candidate": false,
+            "user_related": false
+        },
+        {
+            "endpoint_name": "/books/v1",
+            "method": "POST",
+            "summary": "Add new book",
+            "body_is_required": true,
+            "required_request_parameters": [
+                {
+                    "name": "book_title",
+                    "required": false,
+                    "type": "string",
+                    "example": "book99"
+                },
+                {
+                    "name": "secret",
+                    "required": false,
+                    "type": "string",
+                    "example": "pass1secret"
+                }
+            ],
+            "response_codes": [
+                "200",
+                "400",
+                "401"
+            ],
+            "response_parameters": {
+                "200": [
+                    {
+                        "name": "message",
+                        "required": false,
+                        "type": "string",
+                        "example": "Book has been added."
+                    },
+                    {
+                        "name": "status",
+                        "required": false,
+                        "type": "string",
+                        "example": "success"
+                    }
+                ],
+                "400": [
+                    {
+                        "name": "status",
+                        "required": false,
+                        "type": "string",
+                        "example": "fail"
+                    },
+                    {
+                        "name": "message",
+                        "required": false,
+                        "type": "string",
+                        "example": "Book Already exists!"
+                    }
+                ],
+                "401": [
+                    {
+                        "name": "status",
+                        "required": false,
+                        "type": "string",
+                        "example": "fail"
+                    },
+                    {
+                        "name": "message",
+                        "required": false,
+                        "type": "string",
+                        "example": "Invalid token. Please log in again."
+                    }
+                ]
+            },
+            "security": "JWT",
+            "registration": false,
+            "login_candidate": false,
+            "user_related": false
+        },
+        {
+            "endpoint_name": "/books/v1/{book_title}",
+            "method": "GET",
+            "summary": "Retrieves book by title along with secret",
+            "body_is_required": false,
+            "required_request_parameters": [
+                {
+                    "name": "book_title",
+                    "in": "path",
+                    "required": true,
+                    "type": "string",
+                    "example": "bookTitle77"
+                }
+            ],
+            "response_codes": [
+                "200",
+                "401",
+                "404"
+            ],
+            "response_parameters": {
+                "200": [
+                    {
+                        "name": "",
+                        "required": true,
+                        "type": "array",
+                        "example": null
+                    }
+                ],
+                "401": [
+                    {
+                        "name": "status",
+                        "required": false,
+                        "type": "string",
+                        "example": "fail"
+                    },
+                    {
+                        "name": "message",
+                        "required": false,
+                        "type": "string",
+                        "example": "Invalid token. Please log in again."
+                    }
+                ],
+                "404": [
+                    {
+                        "name": "status",
+                        "required": false,
+                        "type": "string",
+                        "example": "fail"
+                    },
+                    {
+                        "name": "message",
+                        "required": false,
+                        "type": "string",
+                        "example": "Book not found!"
+                    }
+                ]
+            },
+            "security": "JWT",
+            "registration": false,
+            "login_candidate": false,
+            "user_related": false
+        }
+    ]
+}
